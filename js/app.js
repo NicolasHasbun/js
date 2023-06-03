@@ -16,4 +16,4 @@ function numerosParesHasta(numero) {
   
   alert("La cantidad de números pares hasta " + numeroHasta + " es: " + cantidadPares);
 
-  //de momento puse esta funcion de numeros pares en el index pero cuando sepa que quiero crear para mi pagina web la modificare acorde al contenido de la pagina que en este caso es de un videjuego.
+  //de momento puse esta funcion de numeros pares en el index pero cuando sepa que quiero crear para mi pagina web la modificare acorde al contenido de la pagina que en este caso es de un videjuego
