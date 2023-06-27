@@ -1,8 +1,5 @@
-// prompt
-let numero1 = parseFloat(prompt("Ingrese el primer número:"));
-let numero2 = parseFloat(prompt("Ingrese el segundo número:"));
 
-let resultado;
+let historial = [];
 
 function sumar(a, b) {
   return a + b;
@@ -12,52 +9,67 @@ function restar(a, b) {
   return a - b;
 }
 
-function multiplicar(a, b) {
-  return a * b;
+function concatenar(a, b) {
+  return a + b;
 }
 
 function dividir(a, b) {
-  return a / b;
-}
-
-resultado = sumar(numero1, numero2);
-console.log("La suma es:", resultado);
-
-resultado = restar(numero1, numero2);
-console.log("La resta es:", resultado);
-
-resultado = multiplicar(numero1, numero2);
-console.log("La multiplicación es:", resultado);
-
-resultado = dividir(numero1, numero2);
-console.log("La división es:", resultado);
-
-// Array
-let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-function buscarElemento(array, elemento) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === elemento) {
-      return i;
-    }
+  if (b !== 0) {
+    return a / b;
+  } else {
+    return "Error: No se puede dividir por cero.";
   }
-  return -1; 
 }
 
-function filtrarPares(array) {
-  return array.filter(function (numero) {
-    return numero % 2 === 0;
-  });
+function calcularPorcentaje(numero, porcentaje) {
+  return (numero * porcentaje) / 100;
 }
 
-let elementoBuscado = parseFloat(prompt("Ingrese el número a buscar en el array:"));
-let indice = buscarElemento(array, elementoBuscado);
+let operacion = prompt(
+  "Escriba el numero de la operacion a realizar:\n1. Suma\n2. Resta\n3. Concatenación\n4. División\n5. Porcentaje"
+);
 
-if (indice !== -1) {
-  console.log("El número se encuentra en el índice:", indice);
-} else {
-  console.log("El número no se encuentra en el array.");
+operacion = parseInt(operacion);
+
+let num1 = parseFloat(prompt("Ingrese el primer número:"));
+let num2 = parseFloat(prompt("Ingrese el segundo número:"));
+
+let resultado;
+
+switch (operacion) {
+  case 1:
+    resultado = sumar(num1, num2);
+    alert("El resultado de la suma es: " + resultado);
+    break;
+  case 2:
+    resultado = restar(num1, num2);
+    alert("El resultado de la resta es: " + resultado);1
+    break;
+  case 3:
+    resultado = concatenar(num1.toString(), num2.toString());
+    alert("El resultado de la concatenación es: " + resultado);
+    break;
+  case 4:
+    resultado = dividir(num1, num2);
+    alert("El resultado de la división es: " + resultado);
+    break;
+  case 5:
+    resultado = calcularPorcentaje(num1, num2);
+    alert("El resultado del porcentaje es: " + resultado);
+    break;
+  default:
+    alert("Operación no válida.");
 }
 
-let arrayFiltrado = filtrarPares(array);
-console.log("Array filtrado con números pares:", arrayFiltrado);
+historial.push({
+  operacion: operacion,
+  numeros: [num1, num2],
+  resultado: resultado
+});
+
+console.log("Historial de operaciones:");
+historial.forEach(function(item) {
+  console.log("Operación: " + item.operacion);
+  console.log("Números: " + item.numeros.join(", "));
+  console.log("Resultado: " + item.resultado);
+});
